@@ -63,15 +63,47 @@
 		04682E13286B688000E5BECE /* MagicTheGatheringCards */ = {
 			isa = PBXGroup;
 			children = (
+				04AA4BF1286B79B7007DD828 /* Sources */,
+				04AA4BF4286B7A13007DD828 /* Resources */,
+			);
+			path = MagicTheGatheringCards;
+			sourceTree = "<group>";
+		};
+		04AA4BF1286B79B7007DD828 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				04AA4BF2286B79EF007DD828 /* App */,
+				04AA4BF3286B7A06007DD828 /* ViewController */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		04AA4BF2286B79EF007DD828 /* App */ = {
+			isa = PBXGroup;
+			children = (
 				04682E14286B688000E5BECE /* AppDelegate.swift */,
 				04682E16286B688000E5BECE /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		04AA4BF3286B7A06007DD828 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				04682E18286B688000E5BECE /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		04AA4BF4286B7A13007DD828 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				04682E1A286B688000E5BECE /* Main.storyboard */,
 				04682E1D286B688300E5BECE /* Assets.xcassets */,
 				04682E1F286B688300E5BECE /* LaunchScreen.storyboard */,
 				04682E22286B688300E5BECE /* Info.plist */,
 			);
-			path = MagicTheGatheringCards;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		49CEFFD06816491C87696705 /* Pods */ = {
@@ -80,7 +112,6 @@
 				AB6F83438F256F38972E26A3 /* Pods-MagicTheGatheringCards.debug.xcconfig */,
 				F7C9D0178483DB44F4216F20 /* Pods-MagicTheGatheringCards.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -341,12 +372,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 34TG2Y4HBL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MagicTheGatheringCards/Info.plist;
+				INFOPLIST_FILE = MagicTheGatheringCards/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,12 +401,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 34TG2Y4HBL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MagicTheGatheringCards/Info.plist;
+				INFOPLIST_FILE = MagicTheGatheringCards/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
