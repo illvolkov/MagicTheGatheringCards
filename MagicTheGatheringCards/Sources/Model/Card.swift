@@ -15,8 +15,7 @@ struct Card: Decodable {
     let setName: String
     let text: String
     let artist: String
-    let power: String
-    let toughness: String
-    let imageUrl: String
+    let power: String?
+    let toughness: String?
     let flavor: String?
 }

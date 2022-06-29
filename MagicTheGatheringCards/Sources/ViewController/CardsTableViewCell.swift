@@ -11,11 +11,6 @@ import UIKit
 class CardsTableViewCell: UITableViewCell {
     static let identifier = "CardsTableViewCell"
     
-    private lazy var cardImage: UIImageView = {
-        let cardImage = UIImageView()
-        return cardImage
-    }()
-    
     private lazy var cardName: UILabel = {
         let cardName = UILabel()
         cardName.font = .systemFont(ofSize: contentView.frame.width * 0.05, weight: .semibold)
@@ -40,7 +35,6 @@ class CardsTableViewCell: UITableViewCell {
     }
     
     private func setupHierarchy() {
-        contentView.addSubview(cardImage)
         contentView.addSubview(cardName)
         contentView.addSubview(cardSetName)
     }
@@ -52,14 +46,5 @@ class CardsTableViewCell: UITableViewCell {
     func configure(with model: Card?) {
         cardName.text = model?.name
         cardSetName.text = model?.setName
-        
-        guard let imagePath = model?.imageUrl,
-              let imageUrl = URL(string: imagePath),
-              let imageData = try? Data(contentsOf: imageUrl)
-        else {
-            cardImage.image = UIImage(systemName: "error")
-            return
-        }
-        cardImage.image = UIImage(data: imageData)
     }
 }
