@@ -15,6 +15,7 @@
 		04682E21286B688300E5BECE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04682E1F286B688300E5BECE /* LaunchScreen.storyboard */; };
 		04AA4BF7286B7B3A007DD828 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA4BF6286B7B3A007DD828 /* Card.swift */; };
 		04AA4BF9286B7CB5007DD828 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA4BF8286B7CB5007DD828 /* Cards.swift */; };
+		04AA4BFB286B7D49007DD828 /* CardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA4BFA286B7D49007DD828 /* CardsTableViewCell.swift */; };
 		EEB77BF7D0DCBBA0477BB43E /* libPods-MagicTheGatheringCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87F7A61C369F2B77178F0AE /* libPods-MagicTheGatheringCards.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		04682E22286B688300E5BECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04AA4BF6286B7B3A007DD828 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		04AA4BF8286B7CB5007DD828 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		04AA4BFA286B7D49007DD828 /* CardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTableViewCell.swift; sourceTree = "<group>"; };
 		AB6F83438F256F38972E26A3 /* Pods-MagicTheGatheringCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicTheGatheringCards.debug.xcconfig"; path = "Target Support Files/Pods-MagicTheGatheringCards/Pods-MagicTheGatheringCards.debug.xcconfig"; sourceTree = "<group>"; };
 		E87F7A61C369F2B77178F0AE /* libPods-MagicTheGatheringCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MagicTheGatheringCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C9D0178483DB44F4216F20 /* Pods-MagicTheGatheringCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicTheGatheringCards.release.xcconfig"; path = "Target Support Files/Pods-MagicTheGatheringCards/Pods-MagicTheGatheringCards.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				04682E18286B688000E5BECE /* ViewController.swift */,
+				04AA4BFA286B7D49007DD828 /* CardsTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				04682E15286B688000E5BECE /* AppDelegate.swift in Sources */,
 				04682E17286B688000E5BECE /* SceneDelegate.swift in Sources */,
 				04AA4BF7286B7B3A007DD828 /* Card.swift in Sources */,
+				04AA4BFB286B7D49007DD828 /* CardsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
