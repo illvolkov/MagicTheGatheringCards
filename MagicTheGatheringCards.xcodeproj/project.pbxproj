@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		04682E15286B688000E5BECE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04682E14286B688000E5BECE /* AppDelegate.swift */; };
-		04682E17286B688000E5BECE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04682E16286B688000E5BECE /* SceneDelegate.swift */; };
 		04682E19286B688000E5BECE /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04682E18286B688000E5BECE /* CardController.swift */; };
 		04682E1C286B688000E5BECE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04682E1A286B688000E5BECE /* Main.storyboard */; };
 		04682E1E286B688300E5BECE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04682E1D286B688300E5BECE /* Assets.xcassets */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		04682E11286B688000E5BECE /* MagicTheGatheringCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicTheGatheringCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04682E14286B688000E5BECE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04682E16286B688000E5BECE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04682E18286B688000E5BECE /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
 		04682E1B286B688000E5BECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04682E1D286B688300E5BECE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				04682E14286B688000E5BECE /* AppDelegate.swift */,
-				04682E16286B688000E5BECE /* SceneDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -252,7 +249,6 @@
 				04AA4BF9286B7CB5007DD828 /* Cards.swift in Sources */,
 				04682E19286B688000E5BECE /* CardController.swift in Sources */,
 				04682E15286B688000E5BECE /* AppDelegate.swift in Sources */,
-				04682E17286B688000E5BECE /* SceneDelegate.swift in Sources */,
 				04AA4BF7286B7B3A007DD828 /* Card.swift in Sources */,
 				04AA4BFB286B7D49007DD828 /* CardsTableViewCell.swift in Sources */,
 			);

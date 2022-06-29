@@ -31,8 +31,15 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         setupHierarchy()
         setupLayout()
+        setupView()
         
         fetchCards()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationBar()
     }
     
     //MARK: - Settings
@@ -47,6 +54,23 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .white
+        title = "MTG Cards"
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(rgb: 0x9966CC)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     private func fetchCards() {
