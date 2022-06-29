@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CardController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +20,7 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(CardsTableViewCell.self, forCellReuseIdentifier: CardsTableViewCell.identifier)
         return tableView
     }()
     
@@ -29,6 +31,8 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         setupHierarchy()
         setupLayout()
+        
+        fetchCards()
     }
     
     //MARK: - Settings
@@ -43,6 +47,18 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    private func fetchCards() {
+        AF.request("https://api.magicthegathering.io/v1/cards")
+            .validate()
+            .responseDecodable(of: Cards.self) { (response) in
+                guard let responseCard = response.value else { return }
+                self.cards = responseCard.cards
+                print(response)
+                
+                self.tableView.reloadData()
+            }
     }
     
     //MARK: - UITableView methods
