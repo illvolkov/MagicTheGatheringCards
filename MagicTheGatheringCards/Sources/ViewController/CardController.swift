@@ -50,12 +50,15 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func fetchCards() {
-        AF.request("https://api.magicthegathering.io/v1/cards")
+        
+        let url = "https://api.magicthegathering.io/v1/cards"
+        let parameters = ["random": "true"]
+        
+        AF.request(url, parameters: parameters)
             .validate()
             .responseDecodable(of: Cards.self) { (response) in
                 guard let responseCard = response.value else { return }
                 self.cards = responseCard.cards
-                print(response)
                 
                 self.tableView.reloadData()
             }
@@ -75,6 +78,7 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         cell.configure(with: model)
+        cell.selectionStyle = .none
         return cell
     }
 }
