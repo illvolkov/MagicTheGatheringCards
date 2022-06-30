@@ -8,13 +8,14 @@
 import UIKit
 import Alamofire
 
-class CardController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class CardController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Variables
     
-    private var cards: [Card] = []
+    private var cards: [Displayable] = []
+    private var selectedItem: Displayable?
     
-    //MARK: - UI
+    //MARK: - Views
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -65,13 +66,15 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(rgb: 0x9966CC)
+        appearance.backgroundColor = UIColor(rgb: 0x4B0082)
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.standardAppearance = appearance
     }
+    
+    //MARK: - Request
     
     private func fetchCards() {
         
@@ -104,6 +107,12 @@ class CardController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.configure(with: model)
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItem = cards[indexPath.row]
+        let detailViewController = DetailCardController(data: selectedItem)
+        present(detailViewController, animated: true)
     }
 }
 

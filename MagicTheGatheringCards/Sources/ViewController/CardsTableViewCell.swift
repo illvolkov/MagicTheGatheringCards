@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CardsTableViewCell: UITableViewCell {
+final class CardsTableViewCell: UITableViewCell {
     static let identifier = "CardsTableViewCell"
     
     private lazy var cardName: UILabel = {
@@ -64,12 +64,12 @@ class CardsTableViewCell: UITableViewCell {
     
     private func setupContentView() {
         contentView.heightAnchor.constraint(equalToConstant: contentView.frame.width * 0.25).isActive = true
-        contentView.backgroundColor = UIColor(rgb: 0x9966CC)
+        contentView.backgroundColor = UIColor(rgb: 0x4B0082)
         contentView.layer.cornerRadius = contentView.frame.width * 0.05
     }
     
-    func configure(with model: Card) {
-        cardName.text = model.name
-        cardSetName.text = "From set \(model.setName)"
+    func configure(with model: Displayable) {
+        cardName.text = model.nameTitle
+        cardSetName.text = "From set \(model.setNameTitle.value)"
     }
 }
