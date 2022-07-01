@@ -17,7 +17,7 @@ final class DetailCardController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 1.25)
+        scroll.contentSize = CGSize(width: view.frame.width, height: view.frame.height * Sizes.scrollHeightContentSize)
         return scroll
     }()
     
@@ -30,31 +30,31 @@ final class DetailCardController: UIViewController {
     }()
     
     //Parameter headers
-    private lazy var cardName = creatingLabel(withSize: 0.08, weight: .bold, alignment: .center)
-    private lazy var cardManaCostHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardTypeHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardRariryHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardSetNameHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardSetHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardLayoutHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardTextHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardArtistHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardPowerHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardToughnessHeader = creatingLabel(withSize: 0.05, weight: .bold)
-    private lazy var cardFlavorHeader = creatingLabel(withSize: 0.05, weight: .bold)
+    private lazy var cardName = creatingLabel(withSize: Sizes.cardNameFontSize, weight: .bold, alignment: .center)
+    private lazy var cardManaCostHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardTypeHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardRariryHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardSetNameHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardSetHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardLayoutHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardTextHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardArtistHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardPowerHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardToughnessHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
+    private lazy var cardFlavorHeader = creatingLabel(withSize: Sizes.fontSize0_05, weight: .bold)
     
     //Parameters
-    private lazy var cardManaCost = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardType = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardRarity = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardSetName = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardSet = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardLayout = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardText = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardArtist = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardPower = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardToughness = creatingLabel(withSize: 0.04, weight: .semibold)
-    private lazy var cardFlavor = creatingLabel(withSize: 0.04, weight: .semibold)
+    private lazy var cardManaCost = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardType = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardRarity = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardSetName = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardSet = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardLayout = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardText = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardArtist = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardPower = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardToughness = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
+    private lazy var cardFlavor = creatingLabel(withSize: Sizes.fontSize0_04, weight: .semibold)
     
     //Stacks
     private lazy var manaCostStackView = creatingStackView()
@@ -168,28 +168,28 @@ final class DetailCardController: UIViewController {
         
         cardName.translatesAutoresizingMaskIntoConstraints = false
         cardName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                      constant: adaptationToSpecificScreenSize(withSpecificValue: 50,
-                                                                               andNormalValue: 100)).isActive = true
-        cardName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        cardName.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.92).isActive = true
+                                      constant: adaptationToSpecificScreenSize(withSpecificValue: Offsets.cardNameSpecificTopOffset,
+                                                                               andNormalValue: Offsets.cardNameNormalTopOffset)).isActive = true
+        cardName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Offsets.leftOffset15).isActive = true
+        cardName.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Sizes.multiplierWidthSize0_92).isActive = true
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: view.topAnchor,
-                                        constant: adaptationToSpecificScreenSize(withSpecificValue: 150,
-                                                                                 andNormalValue: 250)).isActive = true
+                                        constant: adaptationToSpecificScreenSize(withSpecificValue: Offsets.scrollViewSpecificTopOffset,
+                                                                                 andNormalValue: Offsets.scrollViewNormalTopOffset)).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 15).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.92).isActive = true
+        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Offsets.leftOffset15).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: Sizes.multiplierWidthSize0_92).isActive = true
         stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
     }
     
     private func setupView() {
-        view.backgroundColor = UIColor(rgb: 0x4B0082)
+        view.backgroundColor = Colors.indigoColor
     }
     
     //MARK: - Functions
@@ -207,16 +207,16 @@ final class DetailCardController: UIViewController {
     private func creatingStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 3
+        stackView.spacing = Offsets.stackViewSpacing
         return stackView
     }
     
     private func adaptationToSpecificScreenSize(withSpecificValue: CGFloat, andNormalValue: CGFloat) -> CGFloat {
         let device = UIDevice()
-        if device.name == "iPod touch (7th generation)" ||
-            device.name == "iPhone SE (3rd generation)" ||
-            device.name == "iPhone 8" ||
-            device.name == "iPhone 8 Plus" {
+        if device.name == Strings.iPodName ||
+            device.name == Strings.iPhoneSEName ||
+            device.name == Strings.iPhone8Name ||
+            device.name == Strings.iPhone8PlusName {
             return withSpecificValue
         } else {
             return andNormalValue

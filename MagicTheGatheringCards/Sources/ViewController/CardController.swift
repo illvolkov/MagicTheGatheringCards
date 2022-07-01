@@ -52,21 +52,21 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     private func setupLayout() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Offsets.leftOffset15).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Offsets.leftOffset15).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     private func setupView() {
         view.backgroundColor = .white
-        title = "MTG Cards"
+        title = Strings.viewTitle
     }
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(rgb: 0x4B0082)
+        appearance.backgroundColor = Colors.indigoColor
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
@@ -78,8 +78,8 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private func fetchCards() {
         
-        let url = "https://api.magicthegathering.io/v1/cards"
-        let parameters = ["random": "true"]
+        let url = Strings.mtgCardsPath
+        let parameters = [Strings.parameterRandomName: Strings.parameterRandomValue]
         
         AF.request(url, parameters: parameters)
             .validate()
