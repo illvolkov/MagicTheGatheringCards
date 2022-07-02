@@ -1,0 +1,6 @@
+module Pods_MagicTheGatheringCards {
+  umbrella header "Pods-MagicTheGatheringCards-umbrella.h"
+
+  export *
+  module * { export * }
+}
