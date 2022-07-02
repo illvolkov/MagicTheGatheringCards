@@ -77,7 +77,7 @@ final class DetailCardController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Strings.fatalErrorMessage)
     }
     
     private func commonInit() {

@@ -12,8 +12,9 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //MARK: - Variables
     
-    private var cards: [Displayable] = []
+    private var items: [Displayable] = []
     private var selectedItem: Displayable?
+    private var cards: [Card] = []
     
     //MARK: - Views
 
@@ -23,6 +24,49 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.register(CardsTableViewCell.self, forCellReuseIdentifier: CardsTableViewCell.identifier)
         return tableView
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.delegate = self
+        search.showsCancelButton = true
+        return search
+    }()
+    
+    private lazy var searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = view.frame.width * 0.04
+        button.backgroundColor = Colors.indigoColor
+        button.setTitle("Search", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: view.frame.width * 0.045)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var emptySearchAlert: UIAlertController = {
+        let alert = UIAlertController(title: "Search field is empty",
+                                      message: "Enter the card name in the search field",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        return alert
+    }()
+    
+    private lazy var cardNotFoundAlert: UIAlertController = {
+        let alert = UIAlertController(title: "Сard not found",
+                                      message: "Try a different card name",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        return alert
+    }()
+    
+    private lazy var networkAlert: UIAlertController = {
+        let alert = UIAlertController(title: "",
+                                      message: "",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ОК", style: .cancel))
+        return alert
     }()
     
     //MARK: - Lifecycle
@@ -46,12 +90,26 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: - Settings
     
     private func setupHierarchy() {
+        view.addSubview(searchBar)
+        view.addSubview(searchButton)
         view.addSubview(tableView)
     }
     
     private func setupLayout() {
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        searchBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        searchBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        searchButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
+        searchButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 10).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Offsets.leftOffset15).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Offsets.leftOffset15).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -84,9 +142,15 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
         AF.request(url, parameters: parameters)
             .validate()
             .responseDecodable(of: Cards.self) { (response) in
-                guard let responseCard = response.value else { return }
-                self.cards = responseCard.cards
                 
+                guard let responseCard = response.value else {
+                    self.networkAlert.title = response.error?.errorDescription
+                    self.present(self.networkAlert, animated: true)
+                    return
+                }
+                self.items = responseCard.cards
+                self.cards = responseCard.cards
+                                
                 self.tableView.reloadData()
             }
     }
@@ -94,11 +158,11 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: - UITableView methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cards.count
+        items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = cards[indexPath.row]
+        let model = items[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CardsTableViewCell.identifier,
             for: indexPath) as? CardsTableViewCell else {
@@ -110,9 +174,51 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedItem = cards[indexPath.row]
+        selectedItem = items[indexPath.row]
         let detailViewController = DetailCardController(data: selectedItem)
         present(detailViewController, animated: true)
     }
+    
+    //MARK: - Actions
+    
+    @objc private func searchButtonTapped() {
+        guard !(searchBar.text?.isEmpty ?? false) else {
+            present(emptySearchAlert, animated: true)
+            return
+        }
+        
+        searchCards(with: searchBar.text ?? "")
+        searchBar.resignFirstResponder()
+    }
+    
+    //MARK: - Functions
+    
+    private func searchCards(with name: String) {
+        let url = Strings.mtgCardsPath
+        let parameters = ["name": name]
+        
+        AF.request(url, parameters: parameters)
+            .validate()
+            .responseDecodable(of: Cards.self) { (response) in
+                guard let responseCard = response.value else { return }
+                
+                self.items = responseCard.cards
+                
+                if self.items.isEmpty {
+                    self.present(self.cardNotFoundAlert, animated: true)
+                }
+                self.tableView.reloadData()
+            }
+    }
 }
 
+//MARK: - UISearchBarDelegate methods
+
+extension CardController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        items = cards
+        tableView.reloadData()
+    }
+}

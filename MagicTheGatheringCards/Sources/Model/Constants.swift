@@ -40,6 +40,7 @@ enum Strings {
     static let iPhone8PlusName: String = "iPhone 8 Plus"
     static let cardsIdentifier: String = "CardsTableViewCell"
     static let fromSet: String = "From set"
+    static let fatalErrorMessage: String = "init(coder:) has not been implemented"
 }
 
 enum Colors {
