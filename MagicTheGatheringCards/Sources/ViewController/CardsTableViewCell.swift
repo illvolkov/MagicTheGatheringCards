@@ -9,7 +9,12 @@ import Foundation
 import UIKit
 
 final class CardsTableViewCell: UITableViewCell {
+    
+    //MARK: - Cell identifier
+    
     static let identifier = Strings.cardsIdentifier
+    
+    //MARK: - Views
     
     private lazy var cardName: UILabel = {
         let cardName = UILabel()
@@ -27,6 +32,8 @@ final class CardsTableViewCell: UITableViewCell {
         return cardSetName
     }()
     
+    //MARK: - Initial
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -38,6 +45,8 @@ final class CardsTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    //MARK: - Settings
     
     override func layoutSubviews() {
         super.layoutSubviews()

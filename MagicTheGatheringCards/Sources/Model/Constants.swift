@@ -27,6 +27,10 @@ enum Sizes {
     static let multiplierWidthSize0_9: CGFloat = 0.9
     static let contenViewMultiplierHeightSize: CGFloat = 0.25
     static let contentViewMultiplierCornerRadius: CGFloat = 0.05
+    static let searchButtonMultiplierCornerRadius: CGFloat = 0.04
+    static let searchButtonTitleMultiplierFontSize: CGFloat = 0.045
+    static let searchButtonMultiplierWidthSize: CGFloat = 0.25
+    static let searchButtonMultiplierHeightSize: CGFloat = 0.1
 }
 
 enum Strings {
@@ -41,6 +45,14 @@ enum Strings {
     static let cardsIdentifier: String = "CardsTableViewCell"
     static let fromSet: String = "From set"
     static let fatalErrorMessage: String = "init(coder:) has not been implemented"
+    static let searchButtonTitle: String = "Search"
+    static let emptySearchAlertTitle: String = "Search field is empty"
+    static let emptySearchAlertMessage: String = "Enter the card name in the search field"
+    static let alertActionTitleOK: String = "OK"
+    static let cardNotFoundAlertTitle: String = "Сard not found"
+    static let cardNotFoundAlertMessage: String = "Try a different card name"
+    static let searchBarPlaceholder = "Enter card name"
+    static let parameterName: String = "name"
 }
 
 enum Colors {

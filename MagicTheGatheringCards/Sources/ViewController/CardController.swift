@@ -30,34 +30,36 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
         let search = UISearchBar()
         search.delegate = self
         search.showsCancelButton = true
+        search.placeholder = Strings.searchBarPlaceholder
+        search.tintColor = Colors.indigoColor
         return search
     }()
     
     private lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.cornerRadius = view.frame.width * 0.04
+        button.layer.cornerRadius = view.frame.width * Sizes.searchButtonMultiplierCornerRadius
         button.backgroundColor = Colors.indigoColor
-        button.setTitle("Search", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: view.frame.width * 0.045)
+        button.setTitle(Strings.searchButtonTitle, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: view.frame.width * Sizes.searchButtonTitleMultiplierFontSize)
         button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var emptySearchAlert: UIAlertController = {
-        let alert = UIAlertController(title: "Search field is empty",
-                                      message: "Enter the card name in the search field",
+        let alert = UIAlertController(title: Strings.emptySearchAlertTitle,
+                                      message: Strings.emptySearchAlertMessage,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        alert.addAction(UIAlertAction(title: Strings.alertActionTitleOK, style: .cancel))
         return alert
     }()
     
     private lazy var cardNotFoundAlert: UIAlertController = {
-        let alert = UIAlertController(title: "Сard not found",
-                                      message: "Try a different card name",
+        let alert = UIAlertController(title: Strings.cardNotFoundAlertTitle,
+                                      message: Strings.cardNotFoundAlertMessage,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        alert.addAction(UIAlertAction(title: Strings.alertActionTitleOK, style: .cancel))
         return alert
     }()
     
@@ -65,7 +67,7 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
         let alert = UIAlertController(title: "",
                                       message: "",
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ОК", style: .cancel))
+        alert.addAction(UIAlertAction(title: Strings.alertActionTitleOK, style: .cancel))
         return alert
     }()
     
@@ -103,13 +105,13 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         searchButton.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        searchButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: Offsets.topLeftBottomOffset10).isActive = true
         searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        searchButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
-        searchButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        searchButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Sizes.searchButtonMultiplierWidthSize).isActive = true
+        searchButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: Sizes.searchButtonMultiplierHeightSize).isActive = true
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 10).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: Offsets.topLeftBottomOffset10).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Offsets.leftOffset15).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Offsets.leftOffset15).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -195,7 +197,7 @@ final class CardController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private func searchCards(with name: String) {
         let url = Strings.mtgCardsPath
-        let parameters = ["name": name]
+        let parameters = [Strings.parameterName: name]
         
         AF.request(url, parameters: parameters)
             .validate()
