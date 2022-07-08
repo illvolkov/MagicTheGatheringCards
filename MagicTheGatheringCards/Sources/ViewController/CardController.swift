@@ -10,7 +10,7 @@ import Alamofire
 
 final class CardController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //MARK: - Variables
+    //MARK: - Variables 
     
     private var items: [Displayable] = []
     private var selectedItem: Displayable?
